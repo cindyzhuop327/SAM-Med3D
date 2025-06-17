@@ -9,4 +9,8 @@ import os.path as osp
 from glob import glob
 
 PROJ_DIR = osp.dirname(osp.dirname(__file__))
-img_datas = glob(osp.join(PROJ_DIR, "data", "brain_pre_sam", "*", "*"))
+img_datas = [
+    "/home/zhuox01/SAM-Med3D/data/processed_ACDC/right_ventricle_RV/Dataset029_ACDC",
+    "/home/zhuox01/SAM-Med3D/data/processed_ACDC/myocardium_of_the_left_ventricle_Myo/Dataset029_ACDC",
+    "/home/zhuox01/SAM-Med3D/data/processed_ACDC/left_ventricle_LV/Dataset029_ACDC"
+]
