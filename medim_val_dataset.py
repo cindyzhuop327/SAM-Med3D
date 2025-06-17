@@ -16,10 +16,10 @@ if __name__ == "__main__":
 
     test_data_list = [
         dict(
-            img_dir="./data/ct_AMOS/imagesVal",
-            gt_dir="./data/ct_AMOS/labelsVal",
+            img_dir="/raid/data/nnunet/nnUNET_raw/Dataset029_ACDC/imagesTr",
+            gt_dir="/raid/data/nnunet/nnUNET_raw/Dataset029_ACDC/labelsTr",
             out_dir="./data/ct_AMOS/pred_sammed3d",
-            ckpt_path="./ckpt/sam_med3d_turbo.pth",
+            ckpt_path="https://huggingface.co/blueyo0/SAM-Med3D/blob/main/sam_med3d_turbo.pth",
         ),
     ]
     for test_data in test_data_list:
@@ -27,7 +27,7 @@ if __name__ == "__main__":
         gt_fname_list = sorted(glob(osp.join(test_data["gt_dir"], "*.nii.gz")))
         for gt_fname in tqdm(gt_fname_list):
             case_name = osp.basename(gt_fname).replace(".nii.gz", "")
-            img_path = osp.join(test_data["img_dir"], f"{case_name}.nii.gz")
+            img_path = osp.join(test_data["img_dir"], f"{case_name}_0000.nii.gz")
             gt_path = gt_fname
             out_path = osp.join(test_data["out_dir"], f"{case_name}.nii.gz")
             validate_paired_img_gt(model, img_path, gt_path, out_path, num_clicks=1)
